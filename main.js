@@ -1,46 +1,33 @@
-//Object trong JS
+//Object constructor
 
-//Phần thứ 1
-var myInfo = {
-    name: 'Xun Hiep',
-    age: 20,
-    address: 'HCM'
-};
+//Bản thiết kế
+function User(firstName, lastName, avatar) { //Tạo ra một bản thiết kế, dùng để mô tả đối tượng có những gì
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.avatar = avatar;
 
-myInfo.email = 'xuanhiep0881888@gmail.com'; //thêm một ptu ở bên ngoài
-myInfo['xun-hiep'] = 'hiepdeptrai'; //dừng ngoặc để có thể sử dụng các ký tự bên ngoài như dấu ngoặc ngang
-
-var myKey = 'age';
-
-
-//In phần tử
-console.log(myInfo);
-// name: 'Xun Hiep',
-// age: 20
-//address: 'HCM'
-console.log(myInfo.name); //Xun Hiep
-console.log(myInfo['xun-hiep']); //hiepdeptrai
-
-console.log(myInfo["myKey"]); //20
-
-
-//Xóa phần tử
-delete myInfo.age;
-// name: 'Xun Hiep',
-//address: 'HCM'
-
-
-//Phần thứ 2
-var myInfo2 = {
-    name: 'Xun Hiep',
-    age: 20,
-    address: 'HCM',
-    getName: function() { //một function có tên là getName
-        return this.name; //this = myInfo2
+    this.getName = function() { //this = User
+        return `${this.firstName} ${this.lastName}`; //this = getName - khai bao ở đâu thì nó sẽ là đối tượng đó
     }
-};
+}
+//Cách khai báo thứ 2
+var User2 = function(firstName, lastName, avatar) { //Tạo ra một bản thiết kế, dùng để mô tả đối tượng có những gì
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.avatar = avatar;
+}
 
-console.log(myInfo2.getName);
+//đối tượng 
+var author = new User('Xun', 'Hiep', 'Avatar');
+var user = new User('kitu', 'Tuyen', 'Avatar');
 
-//Function --> phương thức / method
-//Others --> thuộc tính / property
+//Thêm phương thức riêng cho từng đối tượng (giống môn OOP vl :v )
+author.title = 'chia sẻ dạo tại F8';
+user.comment = "Liệu có khóa asp.net k ad =))";
+
+//In
+console.log(author.getName());
+console.log(user.getName());
+
+console.log(author);
+console.log(user);
