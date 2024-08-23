@@ -1,33 +1,30 @@
-//Object constructor
+/*
+    Object prototype - Basic
+    là nguyên liệu để tạo nên ngôi nhà
 
-//Bản thiết kế
-function User(firstName, lastName, avatar) { //Tạo ra một bản thiết kế, dùng để mô tả đối tượng có những gì
+    1.Prototype là gì
+    nguyên mẫu - là cái khuôn
+    2.Sử dụng khi nào
+*/
+function User(firstName, lastName, avatar) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.avatar = avatar;
-
-    this.getName = function() { //this = User
-        return `${this.firstName} ${this.lastName}`; //this = getName - khai bao ở đâu thì nó sẽ là đối tượng đó
+    this.getName = function() {
+        return `${this.first} ${this.lastName}`;
     }
 }
-//Cách khai báo thứ 2
-var User2 = function(firstName, lastName, avatar) { //Tạo ra một bản thiết kế, dùng để mô tả đối tượng có những gì
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.avatar = avatar;
+
+User.prototype.className = 'F8';
+//prototype nó thêm thuộc tính bên ngoài hàm tạo User( cái khung chính )
+//dùng cho đặt thuộc tính cho tất cả các thằng
+User.prototype.getClassName = function() { //phương thức
+    return this.className;
 }
 
-//đối tượng 
-var author = new User('Xun', 'Hiep', 'Avatar');
-var user = new User('kitu', 'Tuyen', 'Avatar');
+var user = new User('xun', 'hiep', 'avatar 1');
+//muốn truyền vào trực tiếp như này thì nó phải nằm trong thằng chính và sử dụng 'this'
 
-//Thêm phương thức riêng cho từng đối tượng (giống môn OOP vl :v )
-author.title = 'chia sẻ dạo tại F8';
-user.comment = "Liệu có khóa asp.net k ad =))";
-
-//In
-console.log(author.getName());
-console.log(user.getName());
-
-console.log(author);
+console.log(user.className);
 console.log(user);
+console.log(user.getClassName());
